@@ -6,11 +6,18 @@
 		<meta name="description" content="A Stardew Valley crop profits calculator and visualizer." />
 		<title>Stardew Profits</title>
 		<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<!-- This will create a global `JSON5` variable. -->
+		<script src="https://unpkg.com/json5@2/dist/index.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="style/style.css" />
 		<link rel="shortcut icon" type="image/png" href="img/ancientfruit.png">
 	</head>
 	<body>
+	<div class="options popup" id="popup">
+		<div id="drop_zone">
+			<h4>Drop files here</h4>
+		</div>
 
+	</div>
 		<div class="title">
 		</div>
 
@@ -84,9 +91,12 @@
 			<tr>
 				<td>Seed sources:</td>
 				<td>
+
 					<input type="checkbox" id="check_seedsPierre" onChange="rebuild()" checked="true" /> <label for="check_seedsPierre">Pierre</label><br />
 					<input type="checkbox" id="check_seedsJoja" onChange="rebuild()" checked="true" /> <label for="check_seedsJoja">Joja</label><br />
-					<input type="checkbox" id="check_seedsSpecial" onChange="rebuild()" checked="true" /> <label for="check_seedsSpecial">Special</label>
+					<input type="checkbox" id="check_seedsSpecial" onChange="rebuild()" checked="true" /> <label for="check_seedsSpecial">Special</label><br />
+					<input type="checkbox" id="check_costless_seeds" onChange="rebuild()" checked="true" /> <label for="check_costless_seeds">Include Costless Seeds</label>
+
 				</td>
 			</tr>
 
@@ -201,12 +211,12 @@
 
 			<tr>
 				<td id="tdhelp"><div id="divhelp"><a href="help.html">Help</a></div></td>
+				<td id="tdhelp"><div id="divhelp"><a href="javascript:openAddItems();">Add Crops</a></div></td>
 				<td id="tdhelp"><div id="divhelp"><a href="#" id="reset">Reset</a></div></td>
 			</tr>
 
 		</table>
 		</div>
-
 		<div class="footer">
 			<p><a href="http://stardewvalley.net/" target="_blank">Stardew Valley v1.5.4</a> &copy; <a href="https://twitter.com/ConcernedApe" target="_blank">ConcernedApe</a> | Website designed by <a href="https://twitter.com/thorinair_music" target="_blank">Thorinair</a> | v1.4.3</p>
 		</div>

@@ -7,7 +7,7 @@ var crops = {
   "amaranth": {
     "name": "Amaranth",
     "url": "http://stardewvalleywiki.com/Amaranth",
-    "img": "amaranth.png",
+    "img": "img/amaranth.png",
     "seeds": {
       "pierre": 70,
       "joja": 87,
@@ -20,8 +20,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 150,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -30,7 +32,7 @@ var crops = {
   "grape": {
     "name": "Grape",
     "url": "http://stardewvalleywiki.com/Grape",
-    "img": "grape.png",
+    "img": "img/grape.png",
     "seeds": {
       "pierre": 60,
       "joja": 75,
@@ -43,8 +45,10 @@ var crops = {
       "regrow": 3
     },
     "produce": {
-      "extra": 1,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 80,
       "jarType": "Jelly",
       "kegType": "Wine"
@@ -53,7 +57,7 @@ var crops = {
   "hops": {
     "name": "Hops",
     "url": "http://stardewvalleywiki.com/Hops",
-    "img": "hops.png",
+    "img": "img/hops.png",
     "seeds": {
       "pierre": 60,
       "joja": 75,
@@ -66,8 +70,10 @@ var crops = {
       "regrow": 1
     },
     "produce": {
-      "extra": 1,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 25,
       "keg": 300,
       "jarType": "Pickles",
@@ -77,7 +83,7 @@ var crops = {
   "pineapple": {
     "name": "Pineapple",
     "url": "http://stardewvalleywiki.com/Pineapple",
-    "img": "pineapple.png",
+    "img": "img/pineapple.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -90,8 +96,10 @@ var crops = {
       "regrow": 7
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 300,
       "jarType": "Jelly",
       "kegType": "Wine"
@@ -100,7 +108,7 @@ var crops = {
   "sweetgemberry": {
     "name": "Sweet Gem Berry",
     "url": "http://stardewvalleywiki.com/Sweet_Gem_Berry",
-    "img": "sweetgemberry.png",
+    "img": "img/sweetgemberry.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -113,15 +121,17 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 3000
     }
   },
   "tealeaves": {
     "name": "Tea Leaves",
     "url": "http://stardewvalleywiki.com/Tea_Leaves",
-    "img": "tealeaves.png",
+    "img": "img/tealeaves.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -134,8 +144,10 @@ var crops = {
       "regrow": 1
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 50,
       "keg": 100,
       "jarType": "Pickles",
@@ -145,7 +157,7 @@ var crops = {
   "fairyrose": {
     "name": "Fairy Rose",
     "url": "http://stardewvalleywiki.com/Fairy_Rose",
-    "img": "fairyrose.png",
+    "img": "img/fairyrose.png",
     "seeds": {
       "pierre": 200,
       "joja": 250,
@@ -158,15 +170,17 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 290
     }
   },
   "tulip": {
     "name": "Tulip",
     "url": "http://stardewvalleywiki.com/Tulip",
-    "img": "tulip.png",
+    "img": "img/tulip.png",
     "seeds": {
       "pierre": 20,
       "joja": 25,
@@ -179,15 +193,17 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 30
     }
   },
   "bluejazz": {
     "name": "Blue Jazz",
     "url": "http://stardewvalleywiki.com/Blue_Jazz",
-    "img": "bluejazz.png",
+    "img": "img/bluejazz.png",
     "seeds": {
       "pierre": 30,
       "joja": 37,
@@ -200,15 +216,17 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 50
     }
   },
   "sunflower": {
     "name": "Sunflower",
     "url": "http://stardewvalleywiki.com/Sunflower",
-    "img": "sunflower.png",
+    "img": "img/sunflower.png",
     "seeds": {
       "pierre": 200,
       "joja": 125,
@@ -221,15 +239,17 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 80
     }
   },
   "coffeebean": {
     "name": "Coffee Bean",
     "url": "http://stardewvalleywiki.com/Coffee_Bean",
-    "img": "coffeebean.png",
+    "img": "img/coffeebean.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -242,8 +262,10 @@ var crops = {
       "regrow": 2
     },
     "produce": {
-      "extra": 3,
-      "extraPerc": 1,
+      "minHarvest": 4,
+      "maxHarvest": 4,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.02,
       "price": 15,
       "keg": 150 / 5,
       "kegType": "Coffee"
@@ -252,7 +274,7 @@ var crops = {
   "poppy": {
     "name": "Poppy",
     "url": "http://stardewvalleywiki.com/Poppy",
-    "img": "poppy.png",
+    "img": "img/poppy.png",
     "seeds": {
       "pierre": 100,
       "joja": 125,
@@ -265,15 +287,17 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 140
     }
   },
   "summerspangle": {
     "name": "Summer Spangle",
     "url": "http://stardewvalleywiki.com/Summer_Spangle",
-    "img": "summerspangle.png",
+    "img": "img/summerspangle.png",
     "seeds": {
       "pierre": 50,
       "joja": 62,
@@ -286,15 +310,17 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 90
     }
   },
   "parsnip": {
     "name": "Parsnip",
     "url": "http://stardewvalleywiki.com/Parsnip",
-    "img": "parsnip.png",
+    "img": "img/parsnip.png",
     "seeds": {
       "pierre": 20,
       "joja": 25,
@@ -307,8 +333,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 35,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -317,7 +345,7 @@ var crops = {
   "greenbean": {
     "name": "Green Bean",
     "url": "http://stardewvalleywiki.com/Green_Bean",
-    "img": "greenbean.png",
+    "img": "img/greenbean.png",
     "seeds": {
       "pierre": 60,
       "joja": 75,
@@ -330,8 +358,10 @@ var crops = {
       "regrow": 3
     },
     "produce": {
-      "extra": 1,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 40,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -340,7 +370,7 @@ var crops = {
   "cauliflower": {
     "name": "Cauliflower",
     "url": "http://stardewvalleywiki.com/Cauliflower",
-    "img": "cauliflower.png",
+    "img": "img/cauliflower.png",
     "seeds": {
       "pierre": 80,
       "joja": 100,
@@ -353,8 +383,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 175,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -363,7 +395,7 @@ var crops = {
   "potato": {
     "name": "Potato",
     "url": "http://stardewvalleywiki.com/Potato",
-    "img": "potato.png",
+    "img": "img/potato.png",
     "seeds": {
       "pierre": 50,
       "joja": 62,
@@ -376,7 +408,9 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 1,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
       "extraPerc": 0.2,
       "price": 80,
       "jarType": "Pickles",
@@ -386,7 +420,7 @@ var crops = {
   "garlic": {
     "name": "Garlic",
     "url": "http://stardewvalleywiki.com/Garlic",
-    "img": "garlic.png",
+    "img": "img/garlic.png",
     "seeds": {
       "pierre": 40,
       "joja": 0,
@@ -399,8 +433,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 60,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -409,7 +445,7 @@ var crops = {
   "taroroot": {
     "name": "Taro Root",
     "url": "http://stardewvalleywiki.com/Taro_Root",
-    "img": "taroroot.png",
+    "img": "img/taroroot.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -422,8 +458,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 100,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -432,7 +470,7 @@ var crops = {
   "kale": {
     "name": "Kale",
     "url": "http://stardewvalleywiki.com/Kale",
-    "img": "kale.png",
+    "img": "img/kale.png",
     "seeds": {
       "pierre": 70,
       "joja": 87,
@@ -445,8 +483,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 110,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -455,7 +495,7 @@ var crops = {
   "unmilledrice" : {
     "name": "Unmilled Rice",
     "url": "http://stardewvalleywiki.com/Unmilled_Rice",
-    "img": "unmilledrice.png",
+    "img": "img/unmilledrice.png",
     "seeds": {
       "pierre": 40,
       "joja": 0,
@@ -468,8 +508,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 1,
-      "extraPerc": 0.11,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 10,
+      "extraPerc": 0.1,
       "price": 30,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -478,7 +520,7 @@ var crops = {
   "rhubarb": {
     "name": "Rhubarb",
     "url": "http://stardewvalleywiki.com/Rhubarb",
-    "img": "rhubarb.png",
+    "img": "img/rhubarb.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -491,8 +533,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 220,
       "jarType": "Jelly",
       "kegType": "Wine"
@@ -501,7 +545,7 @@ var crops = {
   "melon": {
     "name": "Melon",
     "url": "http://stardewvalleywiki.com/Melon",
-    "img": "melon.png",
+    "img": "img/melon.png",
     "seeds": {
       "pierre": 80,
       "joja": 100,
@@ -514,8 +558,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 250,
       "jarType": "Jelly",
       "kegType": "Wine"
@@ -524,7 +570,7 @@ var crops = {
   "tomato": {
     "name": "Tomato",
     "url": "http://stardewvalleywiki.com/Tomato",
-    "img": "tomato.png",
+    "img": "img/tomato.png",
     "seeds": {
       "pierre": 50,
       "joja": 62,
@@ -537,7 +583,9 @@ var crops = {
       "regrow": 4
     },
     "produce": {
-      "extra": 1,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
       "extraPerc": 0.05,
       "price": 60,
       "jarType": "Pickles",
@@ -547,7 +595,7 @@ var crops = {
   "blueberry": {
     "name": "Blueberry",
     "url": "http://stardewvalleywiki.com/Blueberry",
-    "img": "blueberry.png",
+    "img": "img/blueberry.png",
     "seeds": {
       "pierre": 80,
       "joja": 0,
@@ -560,8 +608,10 @@ var crops = {
       "regrow": 4
     },
     "produce": {
-      "extra": 2,
-      "extraPerc": 1,
+      "minHarvest": 3,
+      "maxHarvest": 3,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.02,
       "price": 50,
       "jarType": "Jelly",
       "kegType": "Wine"
@@ -570,7 +620,7 @@ var crops = {
   "hotpepper": {
     "name": "Hot Pepper",
     "url": "http://stardewvalleywiki.com/Hot_Pepper",
-    "img": "hotpepper.png",
+    "img": "img/hotpepper.png",
     "seeds": {
       "pierre": 40,
       "joja": 50,
@@ -583,7 +633,9 @@ var crops = {
       "regrow": 3
     },
     "produce": {
-      "extra": 1,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
       "extraPerc": 0.03,
       "price": 40,
       "jarType": "Jelly",
@@ -593,7 +645,7 @@ var crops = {
   "wheat": {
     "name": "Wheat",
     "url": "http://stardewvalleywiki.com/Wheat",
-    "img": "wheat.png",
+    "img": "img/wheat.png",
     "seeds": {
       "pierre": 10,
       "joja": 12,
@@ -606,8 +658,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 25,
       "keg": 200,
       "jarType": "Pickles",
@@ -617,7 +671,7 @@ var crops = {
   "radish": {
     "name": "Radish",
     "url": "http://stardewvalleywiki.com/Radish",
-    "img": "radish.png",
+    "img": "img/radish.png",
     "seeds": {
       "pierre": 40,
       "joja": 50,
@@ -630,8 +684,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 90,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -640,7 +696,7 @@ var crops = {
   "redcabbage": {
     "name": "Red Cabbage",
     "url": "http://stardewvalleywiki.com/Red_Cabbage",
-    "img": "redcabbage.png",
+    "img": "img/redcabbage.png",
     "seeds": {
       "pierre": 100,
       "joja": 0,
@@ -653,8 +709,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 260,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -663,7 +721,7 @@ var crops = {
   "starfruit": {
     "name": "Starfruit",
     "url": "http://stardewvalleywiki.com/Starfruit",
-    "img": "starfruit.png",
+    "img": "img/starfruit.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -676,8 +734,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 750,
       "jarType": "Jelly",
       "kegType": "Wine"
@@ -686,7 +746,7 @@ var crops = {
   "corn": {
     "name": "Corn",
     "url": "http://stardewvalleywiki.com/Corn",
-    "img": "corn.png",
+    "img": "img/corn.png",
     "seeds": {
       "pierre": 150,
       "joja": 187,
@@ -699,8 +759,10 @@ var crops = {
       "regrow": 4
     },
     "produce": {
-      "extra": 1,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 50,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -709,7 +771,7 @@ var crops = {
   "eggplant": {
     "name": "Eggplant",
     "url": "http://stardewvalleywiki.com/Eggplant",
-    "img": "eggplant.png",
+    "img": "img/eggplant.png",
     "seeds": {
       "pierre": 20,
       "joja": 25,
@@ -722,7 +784,9 @@ var crops = {
       "regrow": 5
     },
     "produce": {
-      "extra": 1,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
       "extraPerc": 0.002,
       "price": 60,
       "jarType": "Pickles",
@@ -732,7 +796,7 @@ var crops = {
   "artichoke": {
     "name": "Artichoke",
     "url": "http://stardewvalleywiki.com/Artichoke",
-    "img": "artichoke.png",
+    "img": "img/artichoke.png",
     "seeds": {
       "pierre": 30,
       "joja": 0,
@@ -745,8 +809,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 160,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -755,7 +821,7 @@ var crops = {
   "pumpkin": {
     "name": "Pumpkin",
     "url": "http://stardewvalleywiki.com/Pumpkin",
-    "img": "pumpkin.png",
+    "img": "img/pumpkin.png",
     "seeds": {
       "pierre": 100,
       "joja": 125,
@@ -768,8 +834,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 320,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -778,7 +846,7 @@ var crops = {
   "bokchoy": {
     "name": "Bok Choy",
     "url": "http://stardewvalleywiki.com/Bok_Choy",
-    "img": "bokchoy.png",
+    "img": "img/bokchoy.png",
     "seeds": {
       "pierre": 50,
       "joja": 62,
@@ -791,8 +859,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 80,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -801,7 +871,7 @@ var crops = {
   "yam": {
     "name": "Yam",
     "url": "http://stardewvalleywiki.com/Yam",
-    "img": "yam.png",
+    "img": "img/yam.png",
     "seeds": {
       "pierre": 60,
       "joja": 75,
@@ -814,8 +884,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 160,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -824,7 +896,7 @@ var crops = {
   "cranberries": {
     "name": "Cranberries",
     "url": "http://stardewvalleywiki.com/Cranberries",
-    "img": "cranberries.png",
+    "img": "img/cranberries.png",
     "seeds": {
       "pierre": 240,
       "joja": 300,
@@ -837,8 +909,10 @@ var crops = {
       "regrow": 5
     },
     "produce": {
-      "extra": 1,
-      "extraPerc": 1,
+      "minHarvest": 2,
+      "maxHarvest": 2,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.1,
       "price": 75,
       "jarType": "Jelly",
       "kegType": "Wine"
@@ -847,7 +921,7 @@ var crops = {
   "beet": {
     "name": "Beet",
     "url": "http://stardewvalleywiki.com/Beet",
-    "img": "beet.png",
+    "img": "img/beet.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -860,8 +934,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 100,
       "jarType": "Pickles",
       "kegType": "Juice"
@@ -870,7 +946,7 @@ var crops = {
   "ancientfruit": {
     "name": "Ancient Fruit",
     "url": "http://stardewvalleywiki.com/Ancient_Fruit",
-    "img": "ancientfruit.png",
+    "img": "img/ancientfruit.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -883,8 +959,10 @@ var crops = {
       "regrow": 7
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 550,
       "jarType": "Jelly",
       "kegType": "Wine"
@@ -893,7 +971,7 @@ var crops = {
   "cactusfruit": {
     "name": "Cactus Fruit",
     "url": "http://stardewvalleywiki.com/Cactus_Fruit",
-    "img": "cactusfruit.png",
+    "img": "img/cactusfruit.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -906,8 +984,10 @@ var crops = {
       "regrow": 3
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       "price": 75,
       "jarType": "Jelly",
       "kegType": "Wine"
@@ -916,7 +996,7 @@ var crops = {
   "strawberry": {
     "name": "Strawberry",
     "url": "http://stardewvalleywiki.com/Strawberry",
-    "img": "strawberry.png",
+    "img": "img/strawberry.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -929,7 +1009,9 @@ var crops = {
       "regrow": 4
     },
     "produce": {
-      "extra": 1,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
       "extraPerc": 0.02,
       "price": 120,
       "jarType": "Jelly",
@@ -939,7 +1021,7 @@ var crops = {
   "springseeds": {
     "name": "Spring Seeds",
     "url": "http://stardewvalleywiki.com/Spring_Seeds",
-    "img": "springseeds.png",
+    "img": "img/springseeds.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -952,8 +1034,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       // (Wild Horseradish + Daffodil + Leek + Dandelion) / 4
       "price": (50 + 30 + 60 + 40) / 4
     },
@@ -962,7 +1046,7 @@ var crops = {
   "summerseeds": {
     "name": "Summer Seeds",
     "url": "http://stardewvalleywiki.com/Summer_Seeds",
-    "img": "summerseeds.png",
+    "img": "img/summerseeds.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -975,8 +1059,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       // (Spice Berry + Grape + Sweet Pea) / 3
       "price": (80 + 80 + 50) / 3,
       "jarType": "Jelly",
@@ -987,7 +1073,7 @@ var crops = {
   "fallseeds": {
     "name": "Fall Seeds",
     "url": "http://stardewvalleywiki.com/Fall_Seeds",
-    "img": "fallseeds.png",
+    "img": "img/fallseeds.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -1000,8 +1086,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       // (Blackberry + Common Mushroom + Hazelnut + Wild Plum) / 4
       "price": (20 + 40 + 90 + 80) / 4,
       "jarType": "Jelly",
@@ -1012,7 +1100,7 @@ var crops = {
   "winterseeds": {
     "name": "Winter Seeds",
     "url": "http://stardewvalleywiki.com/Winter_Seeds",
-    "img": "winterseeds.png",
+    "img": "img/winterseeds.png",
     "seeds": {
       "pierre": 0,
       "joja": 0,
@@ -1025,8 +1113,10 @@ var crops = {
       "regrow": 0
     },
     "produce": {
-      "extra": 0,
-      "extraPerc": 0,
+      "minHarvest": 1,
+      "maxHarvest": 1,
+      "extraPerFarmerLevel": 0,
+      "extraPerc": 0.0,
       // (Crocus + Crystal Fruit + Snow Yam + Winter Root) / 4
       "price": (60 + 150 + 100 + 70) / 4,
       "jarType": "Jelly",

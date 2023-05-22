@@ -76,9 +76,45 @@ body {
     margin-left: 16px;
     margin-top: -2px;
     margin-bottom: -2px;
+    margin-bottom: -2px;
     width: -webkit-fill-available;
 }
 
+#drop_zone {
+	background-color: #222222;
+	outline: #222222 solid 4px;
+	border-radius: 1%;
+	border: 5px dashed #111111;
+	width: 200px;
+	height: 100px;
+	display: flex;
+	margin-bottom: 10px;
+	align-items: center;
+	justify-content: center;
+}
+.popup {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 1;
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-shadow:0 0 0 0 rgba(0,0,0,0);/* dark around it */
+	transform: translate(-50%,-50%) scale(0.1);
+	visibility: hidden;
+	transition: transform 0.1s, box-shadow 0.5s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+
+}
+.open-popup {
+	transform: translate(-50%,-50%) scale(1);
+	box-shadow:0 0 0 1600px rgba(0,0,0,0.25);/* dark around it */
+	visibility: visible;
+}
 .options table tr td .subt td {
     background-color: #181818;
     margin: 0px;
@@ -308,6 +344,10 @@ input[type=checkbox] {
 	background-color: #222222;
 	border-radius: 4px;
 	vertical-align: top;
+}
+#check_costless_seeds {
+	margin-top: 15px;
+
 }
 
 .help a {
