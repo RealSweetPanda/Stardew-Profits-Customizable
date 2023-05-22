@@ -10,7 +10,7 @@ var options = {
 	"buySeed": false,
 	"buyFert": false,
 	"average": false,
-    "fertilizer": 2,
+	"costlessSeeds": false,
     "fertilizerSource": 0,
 	"seeds": {
 		"pierre": true,
