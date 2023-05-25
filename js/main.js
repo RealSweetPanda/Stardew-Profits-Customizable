@@ -731,7 +731,7 @@ function profit(crop) {
         // console.log("Profit (After normal produce): " + profit);
         let extraProduce = 0;
         if (crop.produce.extraPerFarmerLevel > 0)
-            extraProduce = Math.floor((crop.produce.minHarvest + (crop.produce.maxHarvest + ((options.level + options.foodLevel) / crop.produce.extraPerFarmerLevel))) / 2) - 1;
+            extraProduce = Math.floor((crop.produce.minHarvest + (crop.produce.maxHarvest + Math.floor((options.level + options.foodLevel) / crop.produce.extraPerFarmerLevel))) / 2) - 1;
         else
             extraProduce = Math.floor((crop.produce.minHarvest + crop.produce.maxHarvest) / 2) - 1;
         if (extraProduce > 0) {
@@ -739,7 +739,7 @@ function profit(crop) {
             // console.log("Profit (After extra produce): " + profit);
         }
         if (crop.produce.extraPerc > 0) {
-            profit += crop.produce.price * Math.floor(1 / (1 - Math.min(crop.produce.extraPerc, 0.9))) * total_harvests;
+            profit += crop.produce.price * Math.floor(((1 / (1 - Math.min(crop.produce.extraPerc, 0.9)))-1)* total_harvests) ;
             // console.log("Profit (After extra produce): " + profit);
         }
 
@@ -1342,23 +1342,22 @@ function renderGraph() {
                     tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.growth.regrow + " days");
                 else
                     tooltipTr.append("td").attr("class", "tooltipTdRight").text("N/A");
-                if (d.produce.minHarvest > 1 || d.produce.maxHarvest > 1) {
 
                     tooltipTr = tooltipTable.append("tr");
                     tooltipTr.append("td").attr("class", "tooltipTdLeft").text("Amount per harvest:");
                     if (d.produce.extraPerFarmerLevel > 0) {
-                        if (d.produce.minHarvest !== (d.produce.maxHarvest + ((options.level + options.foodLevel) / d.produce.extraPerFarmerLevel)))
+                        if (d.produce.minHarvest !== (d.produce.maxHarvest + Math.floor((options.level + options.foodLevel) / d.produce.extraPerFarmerLevel)))
                             tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.produce.minHarvest + " - " + (d.produce.maxHarvest + Math.floor((options.level + options.foodLevel) / d.produce.extraPerFarmerLevel)) + " (" + Math.floor((options.level + options.foodLevel) / d.produce.extraPerFarmerLevel) + " Bonus from farmer level)");
                         else
                             tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.produce.minHarvest);
-                    } else {
+                    } else if (d.produce.minHarvest > 1){
                         if (d.produce.minHarvest !== d.produce.maxHarvest)
                             tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.produce.minHarvest + " - " + d.produce.maxHarvest);
                         else
                             tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.produce.minHarvest);
                     }
 
-                }
+
 
                 if (d.produce.extraPerc > 0) {
                     tooltipTr = tooltipTable.append("tr");
