@@ -851,8 +851,8 @@ function valueCrops() {
     for (var i = 0; i < cropList.length; i++) {
         if (cropList[i].isWildseed && options.skills.gatherer) {
             cropList[i].produce.minHarvest += 1;
-            if (cropList[i].produce.maxHarvest < cropsList[i].produce.minHarvest)
-                cropsList[i].produce.maxHarvest += 1;
+            if (cropList[i].produce.maxHarvest < cropList[i].produce.minHarvest)
+                cropList[i].produce.maxHarvest += 1;
             cropList[i].produce.extraPerc += 0.2;
         }
         cropList[i].planted = planted(cropList[i]);
