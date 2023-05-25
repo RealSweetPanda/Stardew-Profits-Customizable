@@ -13,6 +13,11 @@ var barWidth = width / seasons[options.season].crops.length - barPadding;
 var miniBar = 8;
 var barOffsetX = 56;
 var barOffsetY = 40;
+var jaMods = [];
+var stfMods = [];
+var index1 = -1;
+
+
 var templateMaker = function (obj) {
     return function (context) {
         var replacer = function (key, val) {
@@ -86,6 +91,9 @@ var produceobj = {
     },
     image: function () {
         return 'image'
+    },
+    modName: function () {
+        return 'modName'
     }
 }
 
@@ -131,6 +139,9 @@ var cropobj = {
     },
     type: function () {
         return 'type'
+    },
+    modName: function () {
+        return 'modName'
     }
 }
 
@@ -235,6 +246,7 @@ async function readEntriesPromise(directoryReader) {
     }
 }
 
+
 async function traverseFileTree(item, path) {
     path = path || "";
 
@@ -244,7 +256,7 @@ async function traverseFileTree(item, path) {
         var dirReader = item.createReader();
 
         await readEntriesPromise(dirReader).then(async function (entries) {
-            if (path.includes("[JA]")) {
+            if (path.includes("[JA]") || jaMods.some(it => path.includes(it))) {
                 if (path.endsWith("Objects/" + item.name)) {
                     item1 = entries.find(it => it.name.endsWith("json"))
                     if (item1.isFile) {
@@ -252,6 +264,12 @@ async function traverseFileTree(item, path) {
                             if (file.name.endsWith("json")) {
                                 await file.text().then(async it => {
                                     if (JSON5.parse(it).Category === "Vegetable" || JSON5.parse(it).Category === "Fruit" || JSON5.parse(it).Category === "Flower") {
+                                        modName = ""
+                                        if (path.includes("[JA]")) {
+                                            modName = path.split("/").find(it => it.includes("[JA]")).replace("[JA] ", "")
+                                        } else if (jaMods.some(it => path.includes(it))) {
+                                            modName = jaMods.find(it => path.includes(it)).replace("[JA] ", "")
+                                        }
                                         var img = entries.find(it => it.name.endsWith("png"))
                                         if (img.isFile) {
                                             await img.file(file1 => {
@@ -262,7 +280,8 @@ async function traverseFileTree(item, path) {
                                                     produceList.push(produce({
                                                         name: JSON5.parse(it).Name,
                                                         sellPrice: JSON5.parse(it).Price,
-                                                        image: reader.result
+                                                        image: reader.result,
+                                                        modName: modName
                                                     }))
                                                 }
                                             })
@@ -278,8 +297,13 @@ async function traverseFileTree(item, path) {
                     if (item1.isFile) {
                         await item1.file(async file => {
                             await file.text().then(it => {
-
-
+                                modName = ""
+                                if (path.includes("[JA]")) {
+                                    console.log(path)
+                                    modName = path.split("/").find(it => it.includes("[JA]")).replace("[JA] ", "")
+                                } else if (jaMods.some(it => path.includes(it))) {
+                                    modName = jaMods.find(it => path.includes(it)).replace("[JA] ", "")
+                                }
                                 cropObject = JSON5.parse(it)
                                 console.log("ping2222222222222");
                                 console.log(otherVanillaStocks);
@@ -336,15 +360,15 @@ async function traverseFileTree(item, path) {
                                     maxHarvest: cropObject.Bonus.MaximumPerHarvest ?? 1,
                                     extraPerFarmerLevel: cropObject.Bonus.MaxIncreasePerFarmLevel ?? 0,
                                     extraPerc: cropObject.Bonus.ExtraChance ?? 0,
-                                    type: cropObject.Type
+                                    type: cropObject.Type,
+                                    modName: modName,
                                 }))
                             })
                         })
                     }
                 }
-            } else if (item.name.includes("[STF]")) {
+            } else if (item.name.includes("[STF]") || stfMods.some(it => path.includes(it))) {
                 console.log("ping3");
-                console.log(entries);
                 item2 = entries.find(it => it.name.includes("shops"))
                 if (item2 != null) {
                     console.log("ping4");
@@ -369,20 +393,74 @@ async function traverseFileTree(item, path) {
                     })
                 }
             }
+            async function checkStf(it) {
+                if (it.isDirectory) {
+                    await readEntriesPromise(it.createReader()).then(await async function (entries1) {
+                        manifestItem = await entries1.find(it => it.name.endsWith("manifest.json"))
+                        if (manifestItem != null) {
 
-            for (var i = 0; i < entries.length; i++) {
-                if (entries.findIndex(it => it.name.includes("[STF]")) > -1) {
-                    console.log("hhh")
-                    await traverseFileTree(entries[entries.findIndex(it => it.name.includes("[STF]"))], path + item.name + "/" + entries[i].name);
-                    entries.splice(entries.findIndex(it => it.name.includes("[STF]")), 1);
+                            if (manifestItem.isFile) {
+
+                                await manifestItem.file(async file => {
+
+                                    await file.text().then(async it => {
+
+                                        json = await JSON5.parse(it)
+                                        if ('ContentPackFor' in json) {
+
+                                            if (json.ContentPackFor.UniqueID === "spacechase0.JsonAssets") {
+                                                jaMods.push(path + item.name + "/" + entries1[i].name)
+                                            } else if (json.ContentPackFor.UniqueID === "Cherry.ShopTileFramework") {
+                                                stfMods.push(path + item.name + "/" + entries1[i].name)
+                                                return true
+                                            }
+                                        }
+                                    })
+                                })
+                            }
+                        }
+                    }).catch(err => {
+                        console.log(err)
+                        return false
+                    })
                 }
-                await traverseFileTree(entries[i], path + item.name + "/" + entries[i].name);
-                if (i === entries.length - 1 && (path.endsWith("Objects") || path.endsWith("Crops"))) {
-                    if (!objectsDone) objectsDone = produceList.length > 0
-                    if (!cropsDone) cropsDone = cropsList.length > 0
-                    console.log("Done with " + item.name, path, objectsDone, cropsDone)
-                    if (objectsDone && cropsDone)
-                        loadCrops();
+                return false
+            }
+
+            index1 = await entries.forEach(await async function (it, index) {
+                await checkStf(it).then(it1 => {
+                        if (it1) {
+                            return index
+                        } else {
+                            return -1
+                        }
+                    }
+
+                )
+
+            })
+            for (var i = 0; i < entries.length; i++) {
+
+                if (i < entries.length)
+                {
+
+                    if (await entries.findIndex(it => it.name.includes("[STF]")) > -1) {
+                        console.log("hhh")
+                        await traverseFileTree(entries[await entries.findIndex(it => it.name.includes("[STF]"))], path + item.name + "/" + entries[i].name);
+                        entries.splice(await entries.findIndex(it => it.name.includes("[STF]")), 1);
+                    } else if (index1 > -1) {
+                        await traverseFileTree(entries[index1], path + item.name + "/" + entries[index1].name);
+                        entries.splice(index1, 1);
+
+                    }
+                    await traverseFileTree(entries[i], path + "/" + entries[i].name);
+                    if (i === entries.length - 1 && (path.endsWith("Objects") || path.endsWith("Crops"))) {
+                        if (!objectsDone) objectsDone = produceList.length > 0
+                        if (!cropsDone) cropsDone = cropsList.length > 0
+                        console.log("Done with " + item.name, path, objectsDone, cropsDone)
+                        if (objectsDone && cropsDone)
+                            loadCrops();
+                    }
                 }
             }
         });
@@ -402,7 +480,7 @@ function removeItemAll(arr, value) {
 function loadCrops() {
     for (i = 0; i < cropsList.length; i++) {
         let crop = cropsList[i];
-        const produce = produceList.find(it => it.name.toLowerCase() === crop.product.toLowerCase());
+        const produce = produceList.find(it => (it.name.toLowerCase() === crop.product.toLowerCase()) && (it.modName === crop.modName));
 
         function getRegrowth() {
             if (crop.regrowth === -1) {
@@ -431,40 +509,42 @@ function loadCrops() {
         const regrowth = getRegrowth();
         const jar = getJar();
         const keg = getKeg();
-        crops[produce.name.toLowerCase().replaceAll(/\s+/g, '')] = {
-            "name": produce.name,
-            "url": "",
-            "img": produce.image,
-            "seeds": {
-                "pierre": crop.pierrePrice,
-                "joja": crop.jojaPrice,
-                "special": crop.specialPrice,
-                "specialLocation": crop.specialLocation
-            },
-            "growth": {
-                "initial": crop.growthInit,
-                "regrow": regrowth
-            },
-            "produce": {
-                "minHarvest": crop.minHarvest,
-                "maxHarvest": crop.maxHarvest,
-                "extraPerFarmerLevel": crop.extraPerFarmerLevel,
-                "extraPerc": crop.extraPerc,
-                "price": produce.sellPrice,
-                "jarType": jar,
-                "kegType": keg
+        if (!Object.keys(crops).some(it => it === produce.name.toLowerCase().replaceAll(/\s+/g, ''))) {
+            crops[produce.name.toLowerCase().replaceAll(/\s+/g, '')] = {
+                "name": produce.name + " (" + crop.modName + ")",
+                "url": "",
+                "img": produce.image,
+                "seeds": {
+                    "pierre": crop.pierrePrice,
+                    "joja": crop.jojaPrice,
+                    "special": crop.specialPrice,
+                    "specialLocation": crop.specialLocation
+                },
+                "growth": {
+                    "initial": crop.growthInit,
+                    "regrow": regrowth
+                },
+                "produce": {
+                    "minHarvest": crop.minHarvest,
+                    "maxHarvest": crop.maxHarvest,
+                    "extraPerFarmerLevel": crop.extraPerFarmerLevel,
+                    "extraPerc": crop.extraPerc,
+                    "price": produce.sellPrice,
+                    "jarType": jar,
+                    "kegType": keg
+                }
             }
+            crop.seasons.forEach(season => {
+                seasons.find(it => it.name.toLowerCase() === season.toLowerCase()).crops.push(crops[produce.name.toLowerCase().replaceAll(/\s+/g, '')])
+            })
+            seasons.find(it => it.name.toLowerCase() === "greenhouse").crops.push(crops[produce.name.toLowerCase().replaceAll(/\s+/g, '')])
+            console.log(cropList)
+            console.log(seasons)
         }
-        crop.seasons.forEach(season => {
-            seasons.find(it => it.name.toLowerCase() === season.toLowerCase()).crops.push(crops[produce.name.toLowerCase().replaceAll(/\s+/g, '')])
-        })
-        seasons.find(it => it.name.toLowerCase() === "greenhouse").crops.push(crops[produce.name.toLowerCase().replaceAll(/\s+/g, '')])
-        console.log(cropList)
-        console.log(seasons)
-        barWidth = width / seasons[options.season].crops.length - barPadding;
-        rebuild()
-        closeAddItems()
+
     }
+    rebuild()
+    closeAddItems()
 }
 
 function dragOverHandler(ev) {
@@ -1266,17 +1346,20 @@ function renderGraph() {
 
                     tooltipTr = tooltipTable.append("tr");
                     tooltipTr.append("td").attr("class", "tooltipTdLeft").text("Amount per harvest:");
-                    if (d.produce.minHarvest !== d.produce.maxHarvest)
-                        tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.produce.minHarvest + " - " + d.produce.maxHarvest);
-                    else
-                        tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.produce.minHarvest);
+                    if (d.produce.extraPerFarmerLevel > 0) {
+                        if (d.produce.minHarvest !== (d.produce.maxHarvest + ((options.level + options.foodLevel) / d.produce.extraPerFarmerLevel)))
+                            tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.produce.minHarvest + " - " + (d.produce.maxHarvest + Math.floor((options.level + options.foodLevel) / d.produce.extraPerFarmerLevel)) + " (" + Math.floor((options.level + options.foodLevel) / d.produce.extraPerFarmerLevel) + " Bonus from farmer level)");
+                        else
+                            tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.produce.minHarvest);
+                    } else {
+                        if (d.produce.minHarvest !== d.produce.maxHarvest)
+                            tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.produce.minHarvest + " - " + d.produce.maxHarvest);
+                        else
+                            tooltipTr.append("td").attr("class", "tooltipTdRight").text(d.produce.minHarvest);
+                    }
 
                 }
-                if (d.produce.extraPerFarmerLevel > 0) {
-                    tooltipTr = tooltipTable.append("tr");
-                    tooltipTr.append("td").attr("class", "tooltipTdLeft").text("Extra per farmer level:");
-                    tooltipTr.append("td").attr("class", "tooltipTdRight").text("One extra per " + d.produce.extraPerFarmerLevel + " level(s) (You Get " + Math.floor((options.level + options.foodLevel) / d.produce.extraPerFarmerLevel) + " extra)");
-                }
+
                 if (d.produce.extraPerc > 0) {
                     tooltipTr = tooltipTable.append("tr");
                     tooltipTr.append("td").attr("class", "tooltipTdLeft").text("Extra chance:");
@@ -1391,6 +1474,10 @@ function updateGraph() {
         .attr("fill", "brown");
 
     imgIcons.data(cropList)
+        .attr("href", function (d) {
+
+            return d.img;
+        })
         .transition()
         .attr("x", function (d, i) {
             return x(i) + barOffsetX;
@@ -1403,9 +1490,7 @@ function updateGraph() {
         })
         .attr('width', barWidth)
         .attr('height', barWidth)
-        .attr("href", function (d) {
-            return d.img;
-        });
+        ;
 
     barsTooltips.data(cropList)
         .transition()
@@ -1778,6 +1863,7 @@ function rebuild() {
     gTooltips.selectAll("*").remove();
 
     updateData();
+    barWidth = width / seasons[4].crops.length - barPadding;
     renderGraph();
 }
 
