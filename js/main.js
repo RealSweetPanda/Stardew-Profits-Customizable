@@ -184,7 +184,6 @@ window.addEventListener('click', function (e) {
 });
 
 function dropHandler(ev) {
-    console.log("File(s) dropped");
 
     // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
@@ -276,7 +275,6 @@ async function traverseFileTree(item, path) {
                                                 var reader = new FileReader();
                                                 reader.readAsDataURL(file1);
                                                 reader.onloadend = function () {
-                                                    console.log(reader.result);
                                                     produceList.push(produce({
                                                         name: JSON5.parse(it).Name,
                                                         sellPrice: JSON5.parse(it).Price,
@@ -299,14 +297,12 @@ async function traverseFileTree(item, path) {
                             await file.text().then(it => {
                                 modName = ""
                                 if (path.includes("[JA]")) {
-                                    console.log(path)
                                     modName = path.split("/").find(it => it.includes("[JA]")).replace("[JA] ", "")
                                 } else if (jaMods.some(it => path.includes(it))) {
                                     modName = jaMods.find(it => path.includes(it)).replace("[JA] ", "")
                                 }
                                 cropObject = JSON5.parse(it)
-                                console.log("ping2222222222222");
-                                console.log(otherVanillaStocks);
+
                                 for (var i = 0; i < pierreAdditional.length; i++) {
                                     if (pierreAdditional[i].ItemNames.includes(cropObject.SeedName)) {
                                         pierrePrice = pierreAdditional[i].StockPrice
@@ -368,17 +364,14 @@ async function traverseFileTree(item, path) {
                     }
                 }
             } else if (item.name.includes("[STF]") || stfMods.some(it => path.includes(it))) {
-                console.log("ping3");
                 item2 = entries.find(it => it.name.includes("shops"))
                 if (item2 != null) {
-                    console.log("ping4");
                     await item2.file(async file => {
                         await file.text().then(async it => {
                             shopobj = JSON5.parse(it)
                             for (const shop of shopobj.VanillaShops) {
                                 if (shop.ShopName === "PierreShop") {
                                     pierreAdditional.push(...shop.ItemStocks)
-                                    console.log(pierreAdditional);
                                 } else if (shop.ShopName === "JojaShop") {
                                     jojaStock.push(...shop.ItemStocks)
                                 } else {
@@ -445,7 +438,6 @@ async function traverseFileTree(item, path) {
                 {
 
                     if (await entries.findIndex(it => it.name.includes("[STF]")) > -1) {
-                        console.log("hhh")
                         await traverseFileTree(entries[await entries.findIndex(it => it.name.includes("[STF]"))], path + item.name + "/" + entries[i].name);
                         entries.splice(await entries.findIndex(it => it.name.includes("[STF]")), 1);
                     } else if (index1 > -1) {
@@ -457,7 +449,6 @@ async function traverseFileTree(item, path) {
                     if (i === entries.length - 1 && (path.endsWith("Objects") || path.endsWith("Crops"))) {
                         if (!objectsDone) objectsDone = produceList.length > 0
                         if (!cropsDone) cropsDone = cropsList.length > 0
-                        console.log("Done with " + item.name, path, objectsDone, cropsDone)
                         if (objectsDone && cropsDone)
                             loadCrops();
                     }
@@ -538,8 +529,7 @@ function loadCrops() {
                 seasons.find(it => it.name.toLowerCase() === season.toLowerCase()).crops.push(crops[produce.name.toLowerCase().replaceAll(/\s+/g, '')])
             })
             seasons.find(it => it.name.toLowerCase() === "greenhouse").crops.push(crops[produce.name.toLowerCase().replaceAll(/\s+/g, '')])
-            console.log(cropList)
-            console.log(seasons)
+
         }
 
     }
@@ -1378,7 +1368,6 @@ function renderGraph() {
         .on("click", function (d) {
             window.open(d.url, "_blank");
         });
-    console.log(cropList);
 }
 
 /*
@@ -1834,7 +1823,6 @@ function deserialize(str) {
         .replace(/([a-z]+)/gi, '"$1":')
         .replace(/"(true|false)":/gi, '$1');
 
-    //console.log(json);
 
     return JSON5.parse(json);
 }
